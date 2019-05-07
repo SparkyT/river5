@@ -1,8 +1,8 @@
-### River5
+# River5
 
 River5 is a <a href="http://scripting.com/2014/06/02/whatIsARiverOfNewsAggregator.html">river-of-news</a> RSS aggregator in JavaScript running in Node, written by <a href="http://scripting.com/liveblog/users/davewiner/2016/02/09/0995.html">Dave Winer</a>.
 
-#### How River5 works
+## How River5 works
 
 When it starts up, River5 reads files in the <i>lists</i> folder at the top level of the River5 folder.
 
@@ -16,7 +16,7 @@ To read the output of River5 on the machine it's running on, go to the home page
 
 Pretty much everything in this narrative is configurable. 
 
-#### Requirements
+## Requirements
 
 A current Node.js installation. 
 
@@ -26,7 +26,7 @@ It is possible to run the software on a non-public machine. Of course, you won't
 
 If you don't have Node.js installed on your machine, here are step by step <a href="https://github.com/scripting/river5/blob/master/docs/FORPOETS.md">instructions</a> for installing Node.js on a Macintosh. 
 
-#### How to install
+## How to install
 
 1. Download the folder from the repository to your local computer. 
 
@@ -40,7 +40,7 @@ If it's working properly, you should see tons of stories scroll by in the consol
 
 At first there will be a lot of old stories, but as the rivers run for hours and days and into weeks, you'll get the flow. It's a good way to read news.
 
-#### Examples of lists
+## Examples of lists
 
 I have included several files in the <i>lists</i> folder to help you get started, so something actually happens the first time you run River5. You can edit, consolidate or delete them, as you wish. 
 
@@ -54,11 +54,11 @@ I have included several files in the <i>lists</i> folder to help you get started
 
 5. <a href="https://github.com/scripting/river5/blob/master/lists/hn.opml">hn.opml</a> -- a list with just one feed in it, the Hacker News firehose. It's a good list for testing RIver5 because it updates so frequently.
 
-#### To view your rivers
+## To view your rivers
 
 Go to <a href="http://localhost:1337/">http://localhost:1337/</a>.
 
-#### Configuring
+## Configuring
 
 There's only one way to configure it, via the config.json file in the same folder as the river5.js app.
 
@@ -66,7 +66,7 @@ The example config.json in the folder sets the max number of items in a river to
 
 All of the config.json options and their default values are listed on <a href="https://github.com/scripting/river5/blob/master/docs/CONFIG.md">this page</a>.
 
-#### For River4 users
+## For River4 users
 
 River5 does not support S3 storage, so if that's how you're running your rivers, you should continue to use <a href="https://github.com/scripting/river4">River4</a>.
 
@@ -78,13 +78,15 @@ River5 does not support S3 storage, so if that's how you're running your rivers,
 
 You may want to review the Configuration settings page, there are options for setting new things, and in some cases the defaults have changed. 
 
-#### Where's the code?
+## Where's the code?
 
-The heart of River5 is in a Node package in the lib folder, called <a href="https://github.com/scripting/river5/blob/master/lib/feedtools.js">feedtools.js</a>.
+The heart of River5 is in a Node package in the lib folder, called <a href="https://www.npmjs.com/package/davereader">davereader</a>.
 
-The plan is to eventually offer it through the Node.js package distribution system so we can easily include feed functionality in other apps. For right now, feedtools.js is set up just to work with river5.js. 
+To upgrade to the latest version of the software `npm update` at the command line in the river5 folder.
 
-#### Examples of working rivers
+river5.js itsef is a very small file and by design almost never changes. 
+
+## Examples of working rivers
 
 1. <a href="http://podcatch.com/">Podcatch.com</a> subscribes to my friends' podcast feeds.
 
@@ -94,7 +96,7 @@ The plan is to eventually offer it through the Node.js package distribution syst
 
 4. My <a href="http://radio3.io/rivers/">rivers page</a> puts all the news I care about on a single tabbed page, with panels for the NYT, Washington Post, Guardian, Movies, Tech, baseball and basketball.
 
-#### Other docs
+## Other docs
 
 1. <a href="https://github.com/scripting/river5/blob/master/docs/ROADTORIVER5.md">The road to River5</a>, reviews  the previous versions of my river-of-news software going back to 1999, with a special focus on the transition from River4 to River5. 
 
@@ -102,11 +104,37 @@ The plan is to eventually offer it through the Node.js package distribution syst
 
 3. My <a href="http://scripting.com/liveblog/users/davewiner/2016/02/09/0995.html">blog post</a> announcing River5. 
 
-#### Updates
+## Updates
+
+##### v0.50 -- 5/18/17 by DW
+
+Major release of River5, but in a way not much changed. 
+
+The <i>lib</i> folder is gone. The two items that were in the folder have <a href="https://www.npmjs.com/package/daveutils">been</a> <a href="https://www.npmjs.com/package/davereader">published</a> using <a href="https://www.npmjs.com/">NPM</a>, the official Node.js software distribution system. This means that they can be used in projects other than River5. 
+
+<a href="https://github.com/scripting/river5/blob/master/river5.js">river5.js</a> has been <a href="https://github.com/scripting/river5/commit/1b19d1b61cfda43761ec7c106a1dd380f82bc0b4#diff-25e8551cb24637c32e269ed7331a2518">changed</a> to use the new version of feedtools, called <i>davereader</i> (the name feedtools was already taken). It should work exactly as before. 
+
+This change will make new feed-based software possible. I've <a href="https://github.com/scripting/reader#story">written</a> about that on the <i>reader</i> site, and in a <a href="http://scripting.com/2017/05/18/davereaderIsTheEngineOfRiver5.html">blog post</a>. 
+
+Otherwise the changes should be totally transparent to River5 users. The software should behave exactly as it did before. Not much actually changed, it's just been reorganized to make it more useful in more situations. 
+
+Future updates will be logged in the <a href="https://github.com/scripting/reader#updates">Updates section</a> of the <i>reader</i> site.
+
+To update to the new version, follow the same <a href="https://github.com/scripting/river5/blob/master/docs/UPGRADE.md">instructions</a> as for previous releases. 
+
+##### v0.49 -- 4/18/17 by DW
+
+Support for podcasting. New config values, described on the config docs <a href="https://github.com/scripting/river5/blob/master/docs/CONFIG.md#podcastsfolder-podcasts">page</a>.
+
+Added <a href="https://github.com/scripting/river5/blob/master/docs/CONFIG.md#buildrivercallbacksfolder-callbacksbuildriver">buildRiver</a> callbacks. 
+
+##### v0.48 -- 3/29/17 by DW
+
+Changes for <a href="http://scripting.com/2017/03/28/comingSoonElectricRiver.html">Electric River</a>. Added three new callbacks to config that allow us to do things a bit more efficiently because the reading and configuring app is running in the same process as the server. Wrote a <a href="https://github.com/scripting/river5/blob/master/docs/ELECTRIC.md">howto doc</a> for people with experience running River5. Added <i>flBuildEveryFiveSeconds</i> to config, if true, we build changed rivers every five seconds instead of once a minute, the default. Building rivers became a lot more efficient in the change from River4 so it made sense to allow them to be rebuilt more frequently. 
 
 ##### v0.47 -- 2/9/17 by DW
 
-Fixed two problems reported by Andrew Shell. Added some feeds to the default set up, and configured the default home page so it only has three panels and they have intelligent labels, using the relatively new <a href="https://github.com/scripting/river5/blob/master/docs/CONFIG.md#configuring-the-home-page">homePage</a> configuration option. Fixed a <a href="http://scripting.com/2017/02/11/cookiesInNytFeeds.html">problem</a> with NYT feeds and cookies. 
+Fixed two problems reported by Andrew Shell. Added some feeds to the default set up, and configured the default home page so it only has three panels and they have intelligent labels, using the relatively new <a href="https://github.com/scripting/river5/blob/master/docs/CONFIG.md#configuring-the-home-page">homePage</a> configuration option. Fixed a <a href="http://scripting.com/2017/02/11/cookiesInNytFeeds.html">problem</a> with NYT feeds and cookies. We now set the User-Agent header on requests. Apparently some servers won't respond unless this header is present. 
 
 ##### v0.46 -- 11/16/16 by DW
 
@@ -150,7 +178,7 @@ One of the first bennies of rebuilding the river software, it's now quite a bit 
 
 Now the calendar structure is just an archive, it's no longer used to build anything. It could be made optional. 
 
-#### Questions, comments?
+## Questions, comments?
 
 Please post a note on the <a href="https://groups.google.com/forum/?fromgroups#!forum/river5">River5</a> mail list. 
 
